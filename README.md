@@ -1,0 +1,4 @@
+TTT
+===
+
+Meteor TinyTest Test
