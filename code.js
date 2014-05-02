@@ -12,12 +12,17 @@ if (Meteor.isServer) {
   });
 }
 
-var _id = testColl.insert({ });
-var doc = testColl.findOne({_id : _id});
+var old_id = testColl.insert({ });
+var doc = testColl.findOne({_id : old_id});
 
-console.log("Sync ID: ", _id, " doc: ", doc);
+console.log("Sync ID: ", old_id, " doc: ", doc);
 
-_id = testColl.insert({ }, function (err, retid) {
+var _id = testColl.insert({ }, function (err, retid) {
 	doc = testColl.findOne({_id : retid});
 	console.log("Sync ID: ", _id, "Async ID: ", retid, " doc: ", doc);
+
+	doc = testColl.findOne({_id : old_id});
+	console.log("Trying to find old_id...  Old ID: ", old_id, " doc: ", doc);
+
+	console.log("How many documents are in testColl? ", testColl.find({}).count());
 });
