@@ -12,7 +12,3 @@ if (Meteor.isServer) {
     insert: function () { return true; }
   });
 }
-
-if (Meteor.isClient) {
-  Meteor.subscribe('everything');
-}
